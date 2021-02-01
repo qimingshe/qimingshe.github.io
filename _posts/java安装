@@ -1,0 +1,9 @@
+目前在官网下载jdk 的时候需要登陆，这边分享一个账号，方便下载 ：
+
+账号：1985479344@qq.com
+密码：Oracle123
+
+a 在Oracle官网下载jdk 11的工具包：https://www.oracle.com/java/technologies/javase-jdk11-downloads.html（最好下载java 11）
+b、下载完成解压到特定的目录下，如:/home/mi/jdk/jdk-11.0.8;
+c、进入root用户：sudo su,执行：update-alternatives --install /usr/bin/java java /home/mi/jdk/jdk-11.0.8/bin/java 1100
+d、执行：update-alternatives --config java 查看配置的java版本并选择对应的java版本
