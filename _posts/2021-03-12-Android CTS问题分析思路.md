@@ -51,10 +51,12 @@ https://cs.android.com/
 
 7.3 实在搞不定，请确认google原生机器pixel是否也会fail，如果也有问题可以找google寻求帮助。如果定位是google测试工具问题或是GMS包的问题，也可以找google寻求帮助。
 
-8. CTS运行小技巧
+
+8.CTS运行小技巧
 
 加快执行速度
-run cts-dev 或者 加 -d-o
+run cts-dev 或者 加 -d -o
+
 run gts  -d - o
 
 涉及到gms问题最常见方式卸载更新或者更新到最新版本来排除问题
