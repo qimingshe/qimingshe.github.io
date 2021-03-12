@@ -1,3 +1,15 @@
+---
+layout:     post
+title:      Android CTS问题分析思路
+
+date:       2021-03-12
+author:     白夜
+header-img: img/post-bg-hacker.jpg
+catalog: true
+tags:
+    - CTS问题
+---
+
 1、CTS（兼容性测试套件Compatibility Test Suite）
 https://source.android.com/compatibility
 CTS是一套自动化测试套件，其目的是尽早发现不兼容性，确保软件在整个开发过程中保持兼容性。测试内容包括：签名测试、平台API测试（核心库和Android 应用框架）、Dalvik测试、平台Intent、平台权限、平台资源。
