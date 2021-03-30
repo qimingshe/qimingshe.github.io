@@ -8,7 +8,24 @@ Log.i(String, String)（信息）
 Log.w(String, String)（警告）
 Log.e(String, String)（错误）
 
-查看备用日志缓冲区
+以下是一个过滤器表达式的示例，该表达式会抑制除标记为“ActivityManager”、优先级不低于“信息”的日志消息，以及标记为“MyApp”、优先级不低于“调试”的日志消息以外的所有其他日志消息：
+
+## 过滤日志输出
+adb logcat ActivityManager:I MyApp:D *:S
+上述表达式中最后一个元素 *:S 将所有标记的优先级设为“静默”，从而确保系统仅显示标记为“ActivityManager”和“MyApp”的日志消息。使用 *:S 是确保日志输出受限于您已明确指定的过滤器的绝佳方式，它可以让过滤器充当日志输出的“许可名单”。
+
+
+以下过滤器表达式显示了优先级不低于“警告”的所有标记的所有日志消息：
+
+adb logcat *:W
+如果您从开发计算机运行 Logcat（相对于在远程 adb shell 上运行），则也可以通过导出环境变量 ANDROID_LOG_TAGS 的值设置默认过滤器表达式：
+
+
+export ANDROID_LOG_TAGS="ActivityManager:I MyApp:D *:S"
+
+
+
+## 查看备用日志缓冲区
 Android 日志记录系统为日志消息保留了多个环形缓冲区，而且并非所有的日志消息都会发送到默认的环形缓冲区。如要查看其他日志消息，您可以使用 -b 选项运行 logcat 命令，以请求查看备用的环形缓冲区。您可以查看下列任意备用缓冲区：
 
 radio：查看包含无线装置/电话相关消息的缓冲区。
@@ -40,6 +57,7 @@ logcat -b main,radio,events
 
 -c, --clear	清除（清空）所选的缓冲区并退出。默认缓冲区集为 main、system 和 crash。如需清除所有缓冲区，请使用 -b all -c。
 
+## 控制日志输出格式
 
 --pid=<pid> ...	仅输出来自给定 PID 的日志。
 -v <format> 设置日志消息的输出格式。默认格式为 threadtime 
