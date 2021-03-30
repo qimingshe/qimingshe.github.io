@@ -1,0 +1,56 @@
+https://developer.android.com/studio/command-line/logcat?hl=zh-cn
+看了文档才知道，原来adb logcat 原来有这么多花样，看来野路子想要胜过正统是很难的。工欲善其事必先利其器，学习过程中应该多翻阅文档。
+
+常用的日志记录方法包括：
+Log.v(String, String)（详细）
+Log.d(String, String)（调试）
+Log.i(String, String)（信息）
+Log.w(String, String)（警告）
+Log.e(String, String)（错误）
+
+查看备用日志缓冲区
+Android 日志记录系统为日志消息保留了多个环形缓冲区，而且并非所有的日志消息都会发送到默认的环形缓冲区。如要查看其他日志消息，您可以使用 -b 选项运行 logcat 命令，以请求查看备用的环形缓冲区。您可以查看下列任意备用缓冲区：
+
+radio：查看包含无线装置/电话相关消息的缓冲区。
+events：查看已经过解译的二进制系统事件缓冲区消息。
+main：查看主日志缓冲区（默认），不包含系统和崩溃日志消息。
+system：查看系统日志缓冲区（默认）。
+crash：查看崩溃日志缓冲区（默认）。
+all：查看所有缓冲区。
+default：报告 main、system 和 crash 缓冲区。
+以下是 -b 选项的用法：
+
+
+[adb] logcat [-b <buffer>]
+以下示例显示了如何查看包含无线装置和电话相关消息的日志缓冲区。
+
+
+adb logcat -b radio
+此外，您也可以为要输出的所有缓冲区指定多个 -b 标记，如下所示：
+
+
+logcat -b main -b radio -b events
+您可以指定一个 -b 标记，后跟缓冲区逗号分隔列表，例如：
+
+
+logcat -b main,radio,events
+
+例如： 抓取android log,   adb logcat -v threadtime -b all>android.log 
+
+
+-c, --clear	清除（清空）所选的缓冲区并退出。默认缓冲区集为 main、system 和 crash。如需清除所有缓冲区，请使用 -b all -c。
+
+
+--pid=<pid> ...	仅输出来自给定 PID 的日志。
+-v <format> 设置日志消息的输出格式。默认格式为 threadtime 
+-d	将日志转储到屏幕并退出。
+-t <count>	仅输出最新的行数。**此选项包括 -d 功能**
+color：使用不同的颜色来显示每个优先级。如要指定格式修饰符，请使用 -v 选项，如下所示：
+
+adb logcat --pid=1376 -d  -v   color -t  10 等同于 adb logcat --pid=1376   -v  color -t  50
+过滤进程号为1376，默认格式为threadtime，用颜色进行日志等级区分，只看最近50行。
+
+您可以通过在命令行中输入 logcat -v --help 获取格式修饰符详细信息。
+
+
+
