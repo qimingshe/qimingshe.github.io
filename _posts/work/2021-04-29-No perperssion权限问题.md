@@ -1,4 +1,15 @@
-
+---
+layout:     post
+title:      adb no permissions 
+subtitle:    adb no permissions 
+date:       2021-04-29
+author:     derek
+header-img: img/post-bg-hacker.jpg
+catalog: true
+tags:
+    - adb
+    - adb perperssion
+---
 
 
 no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]
